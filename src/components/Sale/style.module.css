@@ -1,0 +1,32 @@
+.sale_container {
+    max-width: 1440px;
+    margin: 30px;
+}
+
+.title {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 130%;
+    letter-spacing: 0.03em;
+    padding: 20px 0;
+}
+
+.sale_products {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+@media only screen and (max-width: 768px) {
+    .sale_products {
+        grid-template-columns:  repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+    }
+    .sale_products .container img {
+        width: 150px;
+        height: 150px;
+    }
+
+
+  }

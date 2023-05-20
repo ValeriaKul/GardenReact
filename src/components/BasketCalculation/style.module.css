@@ -1,0 +1,39 @@
+.basket_calc_container {
+  width: 500px;
+  height: 393px;
+  border: 2px solid #000000;
+  border-radius: 21px;
+  padding: 25px;
+}
+
+.title {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 130%;
+  letter-spacing: 0.03em;
+  color: #000000;
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.total_title {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 130%;
+  letter-spacing: 0.03em;
+  color: #000000;
+}
+
+.total_count {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 130%;
+  letter-spacing: 0.03em;
+  color: #000000;
+}

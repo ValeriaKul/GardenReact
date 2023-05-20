@@ -1,0 +1,47 @@
+.filter_bar {
+  max-width: 1440px;
+  margin: 30px auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}
+
+.filter_price .input {
+  width: 103px;
+  height: 42px;
+  border: 1px solid #000000;
+  border-radius: 7px;
+  padding-left: 10px;
+}
+
+.filter_price p,
+.filter_discount p,
+.filter_sort p {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 130%;
+  letter-spacing: 0.03em;
+  color: #000000;
+}
+
+.filter_price,
+.filter_discount,
+.filter_sort {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.filter_discount input {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #000000;
+  border-radius: 7px;
+}
+
+.filter_sort select {
+  width: 219px;
+  height: 40px;
+  border: 1px solid #000000;
+  border-radius: 7px;
+}

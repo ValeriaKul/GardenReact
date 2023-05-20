@@ -1,0 +1,7 @@
+.page{
+    max-width: 1440px;
+    display: flex;
+    /* gap: 40px; */
+    justify-content: space-between;
+    margin: 0 30px;
+}

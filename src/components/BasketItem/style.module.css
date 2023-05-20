@@ -1,0 +1,87 @@
+.basket_item {
+  border-top: 2px solid gray;
+  display: grid;
+  grid-template-columns: 200px 320px 270px 30px;
+  max-width: 820px;
+}
+
+.basket_item:last-child {
+  border-bottom: 2px solid gray;
+}
+.title_and_count {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin: 20px;
+}
+
+.actual_price_container {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+.image_basket {
+  width: 192.6px;
+  height: 166.64px;
+  border-radius: 5px;
+  margin: 20px 0px;
+}
+
+.count_container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid gray;
+  width: 140px;
+  height: 40px;
+  border-radius: 4px;
+}
+
+.title {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 130%;
+  letter-spacing: 0.03em;
+  color: #3a3a3a;
+}
+
+.count {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 130%;
+  letter-spacing: 0.03em;
+  color: #000000;
+}
+
+.btn {
+  font-size: 30px;
+}
+
+.actual_price {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 130%;
+  letter-spacing: 0.03em;
+  color: #000000;
+  margin: auto 0;
+}
+
+.old_price {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 130%;
+  letter-spacing: 0.03em;
+  text-decoration-line: line-through;
+  color: #8b8b8b;
+}
+
+.dtn_delete {
+    font-size: 22px;
+    color: #3a3a3a;
+    margin-top: 20px;
+}

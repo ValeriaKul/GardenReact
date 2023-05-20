@@ -1,0 +1,9 @@
+.page {
+  max-width: 1440px;
+  margin: 0px auto;
+}
+
+.error {
+  width: 1440px;
+  height: 625px;
+}

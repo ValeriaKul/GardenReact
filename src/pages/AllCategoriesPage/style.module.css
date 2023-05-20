@@ -1,0 +1,16 @@
+.page {
+  max-width: 1440px;
+  margin: 0px auto;
+}
+
+.page h1 {
+  padding: 40px 0px;
+  margin: 0 30px ;
+}
+
+.categories_container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-auto-rows: max-content;
+  gap: 20px;
+}

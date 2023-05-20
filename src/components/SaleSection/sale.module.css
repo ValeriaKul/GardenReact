@@ -1,0 +1,77 @@
+.sale_section {
+  max-width: 1440px;
+  background-color: #a1e2eb;
+  height: 600px;
+  padding-left: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+.text {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  gap: 30px;
+}
+.name {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 80px;
+  line-height: 130%;
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+.season {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 63px;
+  line-height: 130%;
+  color: #ffffff;
+}
+
+.btn_sale {
+  width: 155px;
+  height: 82px;
+  color: black;
+  background-color: white;
+  border: none;
+  border-radius: 13px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 130%;
+  color: #2d2d2d;
+}
+
+.picture {
+  display: flex;
+  align-items: flex-end;
+}
+
+.picture img {
+  height: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+  .sale_section {
+    height: 200px;
+    padding: 40px;
+  }
+
+  .picture img {
+    display: none;
+  }
+  .name,
+  .season {
+    font-size: 26px;
+  }
+
+  .btn_sale {
+    position: absolute;
+    right: 40px;
+    width: 85px;
+    height: 52px;
+  }
+}
