@@ -1,12 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import s from "./products.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useParams } from "react-router-dom";
-import { productsResetFilter } from "../../store/reducer/productsReducer";
+import {
+  productsResetFilter,
+  productDiscountFilterAction,
+} from "../../store/reducer/productsReducer";
 import ProductsFilterBar from "../../components/ProductsFilterBar/ProductsFilterBar";
 import ProductItem from "../../components/ProductItem/ProductItem";
 
 export default function ProductsPage() {
+  const [showDiscountedItems, setShowDiscountedItems] = useState(false);
   const dispatch = useDispatch();
   const location = useLocation();
   const { id } = useParams();
@@ -17,16 +21,23 @@ export default function ProductsPage() {
       return products.filter((product) => product.categoryId === +id);
     }
   });
- 
-  const categories = useSelector(( state ) => state.categories);
-  // console.log(categories);
+
+  const categories = useSelector((state) => state.categories);
 
   const category = categories.find((item) => item.id === +id);
-  // console.log(category);
 
   useEffect(() => {
     dispatch(productsResetFilter());
   }, []);
+
+  const handleDiscountCheckboxChange = (checked) => {
+    setShowDiscountedItems(checked);
+    if (checked) {
+      dispatch(productDiscountFilterAction());
+    } else {
+      dispatch(productsResetFilter());
+    }
+  };
 
   return (
     <>
@@ -38,24 +49,23 @@ export default function ProductsPage() {
             {products
               .filter((item) => item.discont_price)
               .map((item) => (
-                <ProductItem
-                  key={item.id}
-                  {...item}
-                />
+                <ProductItem key={item.id} {...item} />
               ))}
           </div>
         </div>
       ) : (
         <div className={s.page}>
           <h2>{category === undefined ? "All products" : category.title}</h2>
-          <ProductsFilterBar />
+          <ProductsFilterBar
+            showDiscountedItems={showDiscountedItems}
+            onDiscountCheckboxChange={handleDiscountCheckboxChange}
+          />
           <div className={s.products}>
-            {products.map((item) => (
-              <ProductItem
-                key={item.id}
-               {...item}
-              />
-            ))}
+            {products
+              .filter((item) => !showDiscountedItems || item.discont_price)
+              .map((item) => (
+                <ProductItem key={item.id} {...item} />
+              ))}
           </div>
         </div>
       )}

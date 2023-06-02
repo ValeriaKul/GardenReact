@@ -1,7 +1,29 @@
-.page{
-    max-width: 1440px;
-    display: flex;
-    /* gap: 40px; */
-    justify-content: space-between;
-    margin: 0 30px;
+.page {
+  max-width: 1440px;
+  display: grid;
+  gap: 40px;
+  grid-template-columns: auto 1fr;
+  margin: 0 30px;
+}
+
+.no_items {
+  text-align: center;
+}
+.title {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 130%;
+  letter-spacing: 0.03em;
+  margin: 30px;
+}
+
+
+@media only screen and (max-width: 768px) {
+  .page  {
+    grid-template-columns: 1fr;
+  }
+  .title{
+    font-size: 23px;
+  }
 }

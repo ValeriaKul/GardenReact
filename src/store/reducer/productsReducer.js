@@ -1,8 +1,10 @@
 const PRODUCTS_LOAD = "PRODUCTS_LOAD";
 const PRODUCTS_RESET_FILTER = "PRODUCTS_RESET_FILTER";
+const PRODUCT_DISCOUNT_FILTER = 'PRODUCT_DISCOUNT_FILTER';
 const PRODUCTS_SORT_PRICE_FILTER = "PRODUCTS_SORT_PRICE_FILTER";
 const PRODUCTS_SORT_TITLE_FILTER = "PRODUCTS_SORT_TITLE_FILTER";
 const UPDATE_PRICE_FILTER = "UPDATE_PRICE_FILTER";
+
 
 export const productsLoadAction = (payload) => ({
   type: PRODUCTS_LOAD,
@@ -13,6 +15,11 @@ export const productsResetFilter = () => ({
   type: PRODUCTS_RESET_FILTER,
 });
 
+export const productDiscountFilterAction = (payload) => ({
+  type: PRODUCT_DISCOUNT_FILTER,
+  payload
+})
+
 export const productsSortPriceAction = (payload) => ({
   type: PRODUCTS_SORT_PRICE_FILTER,
   payload,
@@ -22,6 +29,7 @@ export const productsSortTitleAction = (payload) => ({
   type: PRODUCTS_SORT_TITLE_FILTER,
   payload,
 });
+
 
 
 export const productsSortFromToFilterAction = (minPrice, maxPrice) => ({
@@ -35,7 +43,12 @@ export const productsReducer = (state = [], action) => {
       return action.payload.map((item) => ({ ...item, show: true }));
     case PRODUCTS_RESET_FILTER:
       return state.map((item) => ({ ...item, show: true }));
-  
+    case PRODUCT_DISCOUNT_FILTER:
+      if (action.payload) {
+        return state.filter((item) => item.discont_price !== null);
+      } else {
+        return state;
+      }
     case PRODUCTS_SORT_TITLE_FILTER:
       if (action.payload === "ascend") {
         return [...state].sort((a, b) => a.title.localeCompare(b.title));

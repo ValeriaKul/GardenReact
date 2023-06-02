@@ -67,6 +67,7 @@
   font-size: 18px;
   color: #339933;
   opacity: 0;
+  cursor: pointer;
 }
 
 .container:hover .btn_add_to_basket {

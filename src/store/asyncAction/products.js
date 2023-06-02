@@ -8,3 +8,4 @@ export const asyncLoadProductsAction = async(dispatch) => {
     const data = await response.json();
     dispatch(productsLoadAction(data));
 }
+

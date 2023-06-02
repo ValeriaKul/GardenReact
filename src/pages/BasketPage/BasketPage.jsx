@@ -12,33 +12,34 @@ const data = basket.map((item) => {
     return { ...item, ...product };
   });
 
-  console.log(data);
-
   return (
-    <div className={s.page}>
-      {products.length === 0 ? (
-        <p>"Is loading..."</p>
-      ) : (
-        <>
-          <div className={s.basket_items}>
-            {
-              data.length === 0 ? (
-                <div>No items in the cart</div>
-              ) : 
-              (
-                data.map((item) => (
-                  <BasketItem key={item.id} {...item} />
-                ))
-                
-                )
-              }
-    
-          </div>
-          { data.length === 0 ? '' :  <BasketCalculation />}
-         
-        </>
-      )
-      }
+    <div className={s.container}>
+      <h2 className={s.title}>Shopping cart</h2>
+      <div className={s.page}>
+        {products.length === 0 ? (
+          <p>"Is loading..."</p>
+        ) : (
+          <>
+            <div className={s.basket_items}>
+              {
+                data.length === 0 ? (
+                  <div className={s.no_items}>No items in the cart</div>
+                ) : 
+                (
+                  data.map((item) => (
+                    <BasketItem key={item.id} {...item} />
+                  ))
+                  
+                  )
+                }
+      
+            </div>
+            { data.length === 0 ? '' :  <BasketCalculation />}
+          
+          </>
+        )
+        }
+      </div>
     </div>
   )
 }

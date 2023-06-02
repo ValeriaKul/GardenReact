@@ -3,7 +3,7 @@ import s from "./style.module.css";
 import { BiPlus, BiMinus } from "react-icons/bi";
 import { GrClose } from "react-icons/gr";
 import { useDispatch } from "react-redux";
-import { basketDecrementAction, basketIncrementAction } from "../../store/reducer/basketReducer";
+import { basketDecrementAction, basketDeleteProduct, basketIncrementAction } from "../../store/reducer/basketReducer";
 
 export default function BasketItem({
   image,
@@ -27,14 +27,14 @@ export default function BasketItem({
         </div>
       </div>
       {discont_price === null ? (
-        <p className={s.actual_price}>{price} $</p>
+        <p className={s.actual_price}>{(price * count).toFixed(0)} $</p>
       ) : (
         <div className={s.actual_price_container}>
-          <p className={s.actual_price}>{discont_price} $</p>
-          <p className={s.old_price}>{price} $</p>
+          <p className={s.actual_price}>{(discont_price * count).toFixed(0)} $</p>
+          <p className={s.old_price}>{(price * count).toFixed(0)} $</p>
         </div>
       )}
-      <GrClose className={s.dtn_delete}/>
+      <GrClose className={s.dtn_delete} onClick={()=> dispatch(basketDeleteProduct(id))}/>
     </div>
   );
 }

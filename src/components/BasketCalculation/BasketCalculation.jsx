@@ -10,32 +10,32 @@ export default function BasketCalculation() {
     const product = products.find(({ id }) => id === item.id);
     return { ...item, ...product };
   });
-  console.log(data);
+
+  const totalPrice = data.reduce(
+    (a, b) => a + (b.discont_price ? b.discont_price : b.price) * b.count,
+    0
+  );
   return (
     <div className={s.basket_calc_container}>
       <p className={s.title}>Order details</p>
       <div className={s.details}>
         <p className={s.total_title}>Total</p>
         <p className={s.total_count}>
-          {data.reduce(
-            (a, b) =>
-              a + (b.discont_price ? b.discont_price : b.price) * b.count,
-            0
-          )}{" "}
+          {`${totalPrice.toFixed(0)},00`}{" "}
           $
         </p>
       </div>
-      <form className={s.form} >
-          <input
-            type="tel"
-            name="number"
-            className={s.number}
-            maxLength="14"
-            minLength="14"
-            placeholder=" Phone number "
-          />
-          <button className={s.btn_discount}>Get a discount</button>
-        </form>
+      <form className={s.form}>
+        <input
+          type="tel"
+          name="number"
+          className={s.number}
+          maxLength="14"
+          minLength="14"
+          placeholder=" Phone number "
+        />
+        <button className={s.btn_order}>Order</button>
+      </form>
     </div>
   );
 }

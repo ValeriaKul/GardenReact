@@ -37,3 +37,51 @@
   letter-spacing: 0.03em;
   color: #000000;
 }
+
+.number {
+  width: 446px;
+  height: 73px;
+  left: 939px;
+  top: 492px;
+  background: #ffffff;
+  border: 1px solid #000000;
+  border-radius: 20px;
+  font-size: 26px;
+  text-align: center;
+}
+
+.number:hover {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+.btn_order {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 28.7392px;
+  line-height: 120%;
+  letter-spacing: 0.03em;
+  color: #ffffff;
+  width: 446px;
+  height: 76px;
+  background: #339933;
+  border-radius: 17px;
+  cursor: pointer;
+  border: none;
+}
+
+.btn_order:hover {
+  border: 5px solid #ffffff;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
