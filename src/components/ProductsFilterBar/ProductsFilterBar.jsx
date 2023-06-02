@@ -1,16 +1,23 @@
 import React from "react";
 import s from "./style.module.css";
 import { useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { productsSortPriceAction } from "../../store/reducer/productsReducer";
 
 export default function ProductsFilterBar({
   showDiscountedItems,
   onDiscountCheckboxChange,
 }) {
   const location = useLocation();
+  const dispatch = useDispatch();
   
   const handleDiscountCheckbox = (event) => {
     const checked = event.target.checked;
     onDiscountCheckboxChange(checked);
+  };
+
+  const sortPriceOnChange = (event) => {
+    dispatch(productsSortPriceAction(event.target.value));
   };
   return (
     <>
@@ -23,9 +30,11 @@ export default function ProductsFilterBar({
           </form>
           <div className={s.filter_sort}>
             <p>Sorted</p>
-            <select name="sort">
-              <option value="ascend_price">by asc price</option>
-              <option value="descend_price">by desc price</option>
+            <select name="sort" onChange={sortPriceOnChange}>
+              <option value="default">by default</option>
+              <option value="ascend">by asc price</option>
+              <option value="descend">by desc price</option>
+
             </select>
           </div>
         </div>
@@ -47,9 +56,10 @@ export default function ProductsFilterBar({
           </form>
           <div className={s.filter_sort}>
             <p>Sorted</p>
-            <select name="sort">
-              <option value="ascend_price">by asc price</option>
-              <option value="descend_price">by desc price</option>
+            <select name="sort" onChange={sortPriceOnChange}>
+              <option value="default">by default</option>
+              <option value="ascend">by asc price</option>
+              <option value="descend">by desc price</option>
             </select>
           </div>
         </div>

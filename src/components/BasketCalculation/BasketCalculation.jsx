@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import s from "./style.module.css";
+import { basketClearAction } from "../../store/reducer/basketReducer";
 
 export default function BasketCalculation() {
   const dispatch = useDispatch();
@@ -34,7 +35,7 @@ export default function BasketCalculation() {
           minLength="14"
           placeholder=" Phone number "
         />
-        <button className={s.btn_order}>Order</button>
+        <button className={s.btn_order} onClick={()=>dispatch(basketClearAction())}>Order</button>
       </form>
     </div>
   );

@@ -1,10 +1,8 @@
 const PRODUCTS_LOAD = "PRODUCTS_LOAD";
 const PRODUCTS_RESET_FILTER = "PRODUCTS_RESET_FILTER";
-const PRODUCT_DISCOUNT_FILTER = 'PRODUCT_DISCOUNT_FILTER';
+const PRODUCT_DISCOUNT_FILTER = "PRODUCT_DISCOUNT_FILTER";
 const PRODUCTS_SORT_PRICE_FILTER = "PRODUCTS_SORT_PRICE_FILTER";
-const PRODUCTS_SORT_TITLE_FILTER = "PRODUCTS_SORT_TITLE_FILTER";
 const UPDATE_PRICE_FILTER = "UPDATE_PRICE_FILTER";
-
 
 export const productsLoadAction = (payload) => ({
   type: PRODUCTS_LOAD,
@@ -17,25 +15,23 @@ export const productsResetFilter = () => ({
 
 export const productDiscountFilterAction = (payload) => ({
   type: PRODUCT_DISCOUNT_FILTER,
-  payload
-})
+  payload,
+});
 
 export const productsSortPriceAction = (payload) => ({
   type: PRODUCTS_SORT_PRICE_FILTER,
   payload,
 });
 
-export const productsSortTitleAction = (payload) => ({
-  type: PRODUCTS_SORT_TITLE_FILTER,
-  payload,
-});
-
-
-
 export const productsSortFromToFilterAction = (minPrice, maxPrice) => ({
   type: UPDATE_PRICE_FILTER,
   payload: { minPrice, maxPrice },
 });
+
+const getPrice = ({ price, discont_price }) => {
+  let actual_price = discont_price !== null ? discont_price : price;
+  return actual_price;
+};
 
 export const productsReducer = (state = [], action) => {
   switch (action.type) {
@@ -49,13 +45,23 @@ export const productsReducer = (state = [], action) => {
       } else {
         return state;
       }
-    case PRODUCTS_SORT_TITLE_FILTER:
+    case PRODUCTS_SORT_PRICE_FILTER:
+      if (action.payload === "default"){
+        return state;
+      }
+      if (action.payload === "ascend") {
+        return [...state].sort((a, b) => getPrice(a) - getPrice(b));
+      } else {
+        return [...state].sort((a, b) => getPrice(b) - getPrice(a));
+      }
+      break;
+    /* case PRODUCTS_SORT_TITLE_FILTER:
       if (action.payload === "ascend") {
         return [...state].sort((a, b) => a.title.localeCompare(b.title));
       } else {
         return [...state].sort((a, b) => b.title.localeCompare(a.title));
-      }
+      } */
     default:
       return state;
   }
-}
+};

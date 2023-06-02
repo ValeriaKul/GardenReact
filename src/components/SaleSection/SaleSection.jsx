@@ -1,11 +1,11 @@
 import React from 'react'
 import s from './sale.module.css';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export default function SaleSection() {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const onClick = () => {
-    // navigate('/sales');
+    navigate('/products/sale');
   }
   return (
     <div className={s.sale_section}>
