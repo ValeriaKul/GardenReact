@@ -1,8 +1,15 @@
 .filter_bar {
   max-width: 1440px;
   margin: 30px auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  display: flex;
+  justify-content: space-between
+}
+
+.filter_bar_sale {
+  max-width: 1440px;
+  margin: 30px auto;
+  display: flex;
+  justify-content: space-between;
 }
 
 .filter_price .input {

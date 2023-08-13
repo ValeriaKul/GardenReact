@@ -6,7 +6,6 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { asyncLoadProductsAction } from "../../store/asyncAction/products";
 import { asyncLoadCategoriesAction } from "../../store/asyncAction/categories";
-import { getDiscountAction } from "../../store/reducer/discountReduser";
 import AllCategoriesPage from "../../pages/AllCategoriesPage/AllCategoriesPage";
 import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 import ProductsPage from "../../pages/ProductsPage/ProductsPage";
@@ -20,14 +19,8 @@ function App() {
   useEffect(()=>{
     dispatch(asyncLoadProductsAction);
     dispatch(asyncLoadCategoriesAction);
+    // eslint-disable-next-line
   },[])
-
-  useEffect(() => {
-    const savedData = localStorage.getItem("discountData");
-    if (savedData) {
-      dispatch(getDiscountAction(JSON.parse(savedData)));
-    }
-  }, []);
 
   useEffect(() => {
 		window.scrollTo(0, 0);

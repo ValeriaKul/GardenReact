@@ -2,7 +2,7 @@ const PRODUCTS_LOAD = "PRODUCTS_LOAD";
 const PRODUCTS_RESET_FILTER = "PRODUCTS_RESET_FILTER";
 const PRODUCT_DISCOUNT_FILTER = "PRODUCT_DISCOUNT_FILTER";
 const PRODUCTS_SORT_PRICE_FILTER = "PRODUCTS_SORT_PRICE_FILTER";
-const UPDATE_PRICE_FILTER = "UPDATE_PRICE_FILTER";
+const SEARCH_BY_PRICE = "SEARCH_BY_PRICE";
 
 export const productsLoadAction = (payload) => ({
   type: PRODUCTS_LOAD,
@@ -23,13 +23,13 @@ export const productsSortPriceAction = (payload) => ({
   payload,
 });
 
-export const productsSortFromToFilterAction = (minPrice, maxPrice) => ({
-  type: UPDATE_PRICE_FILTER,
-  payload: { minPrice, maxPrice },
+export const productsSortFromToFilterAction = (payload) => ({
+  type: SEARCH_BY_PRICE,
+  payload,
 });
 
-const getPrice = ({ price, discont_price }) => {
-  let actual_price = discont_price !== null ? discont_price : price;
+const getPrice = ({ price, discount_price }) => {
+  let actual_price = discount_price !== null ? discount_price : price;
   return actual_price;
 };
 
@@ -41,26 +41,32 @@ export const productsReducer = (state = [], action) => {
       return state.map((item) => ({ ...item, show: true }));
     case PRODUCT_DISCOUNT_FILTER:
       if (action.payload) {
-        return state.filter((item) => item.discont_price !== null);
+        return state.filter((item) => item.discount_price !== null);
       } else {
         return state;
       }
     case PRODUCTS_SORT_PRICE_FILTER:
-      if (action.payload === "default"){
-        return state;
+      if (action.payload === "default") {
+        return [...state].sort((a, b) => a.id - b.id);
       }
       if (action.payload === "ascend") {
         return [...state].sort((a, b) => getPrice(a) - getPrice(b));
       } else {
         return [...state].sort((a, b) => getPrice(b) - getPrice(a));
       }
-      break;
-    /* case PRODUCTS_SORT_TITLE_FILTER:
-      if (action.payload === "ascend") {
-        return [...state].sort((a, b) => a.title.localeCompare(b.title));
-      } else {
-        return [...state].sort((a, b) => b.title.localeCompare(a.title));
-      } */
+    case SEARCH_BY_PRICE:
+      return [...state].map((el) => {
+        let actualPrice =
+          el.discount_price === null ? el.price : el.discount_price;
+        if (
+          actualPrice >= action.payload.min &&
+          actualPrice <= action.payload.max
+        ) {
+          return { ...el, hide: false };
+        } else {
+          return { ...el, hide: true };
+        }
+      });
     default:
       return state;
   }

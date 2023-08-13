@@ -4,17 +4,18 @@ import { BiPlus, BiMinus } from "react-icons/bi";
 import { GrClose } from "react-icons/gr";
 import { useDispatch } from "react-redux";
 import { basketDecrementAction, basketDeleteProduct, basketIncrementAction } from "../../store/reducer/basketReducer";
+import { LINK } from "../../store/link/link";
 
 export default function BasketItem({
   image,
   title,
   count,
-  discont_price,
+  discount_price,
   price,
   id
 }) {
     const dispatch = useDispatch();
-    const linkToImg = `http://localhost:3333/${image}`
+    const linkToImg = `${LINK}${image}`
   return (
     <div className={s.basket_item}>
       <img className={s.image_basket} src={linkToImg} alt={title} />
@@ -26,12 +27,12 @@ export default function BasketItem({
           <BiPlus className={s.btn} onClick={() => dispatch(basketIncrementAction(id))}/>
         </div>
       </div>
-      {discont_price === null ? (
-        <p className={s.actual_price}>{(price * count).toFixed(0)} $</p>
+      {discount_price === null ? (
+        <p className={s.actual_price}>{(price * count).toFixed(2)}$</p>
       ) : (
         <div className={s.actual_price_container}>
-          <p className={s.actual_price}>{(discont_price * count).toFixed(0)} $</p>
-          <p className={s.old_price}>{(price * count).toFixed(0)} $</p>
+          <p className={s.actual_price}>{(discount_price * count).toFixed(2)}$</p>
+          <p className={s.old_price}>{(price * count).toFixed(2)}$</p>
         </div>
       )}
       <GrClose className={s.dtn_delete} onClick={()=> dispatch(basketDeleteProduct(id))}/>

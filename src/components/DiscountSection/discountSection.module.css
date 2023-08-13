@@ -62,6 +62,12 @@
   cursor: pointer;
 }
 
+.btn_discount.disabled {
+  border: 2.39494px solid #d1d1d1; 
+  color: #d1d1d1; 
+  cursor: not-allowed;
+}
+
 .btn_discount:hover {
   border: 5px solid #ffffff;
 }

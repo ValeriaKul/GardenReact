@@ -47,7 +47,7 @@ export default function ProductsPage() {
           <ProductsFilterBar />
           <div className={s.products}>
             {products
-              .filter((item) => item.discont_price)
+              .filter((item) => item.discount_price)
               .map((item) => (
                 <ProductItem key={item.id} {...item} />
               ))}
@@ -62,7 +62,7 @@ export default function ProductsPage() {
           />
           <div className={s.products}>
             {products
-              .filter((item) => !showDiscountedItems || item.discont_price)
+              .filter((item) => !showDiscountedItems || item.discount_price)
               .map((item) => (
                 <ProductItem key={item.id} {...item} />
               ))}

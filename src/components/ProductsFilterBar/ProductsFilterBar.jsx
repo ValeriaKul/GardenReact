@@ -22,7 +22,7 @@ export default function ProductsFilterBar({
   return (
     <>
       {location.pathname === "/products/sale" ? (
-        <div className={s.filter_bar}>
+        <div className={s.filter_bar_sale}>
           <form className={s.filter_price}>
             <p>Price</p>
             <input className={s.input} type="number" placeholder="from" />

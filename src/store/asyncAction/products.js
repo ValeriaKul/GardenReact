@@ -1,7 +1,7 @@
 import { productsLoadAction } from "../reducer/productsReducer";
+import { LINK } from "../link/link";
 
-
-const URL = 'http://localhost:3333/products/all'
+const URL = `${LINK}/products/all`
 
 export const asyncLoadProductsAction = async(dispatch) => {
     const response = await fetch(URL);

@@ -12,7 +12,7 @@ export default function HomePage() {
   const products = useSelector((state) => state.products);
   const [randomData, setRandomData] = useState([]);
   const navigate = useNavigate();
-  const saleProducts = products.filter(elem => elem.discont_price !== null);
+  const saleProducts = products.filter(elem => elem.discount_price !== null);
 
   useEffect(() => {
     const shuffledData = shuffleArray(saleProducts);

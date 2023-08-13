@@ -2,6 +2,7 @@ import React from "react";
 import s from "./style.module.css";
 import { useDispatch } from "react-redux";
 import { basketAddProductAction } from "../../store/reducer/basketReducer";
+import { LINK } from "../../store/link/link";
 
 export default function ProductDescription({
   title,
@@ -9,9 +10,9 @@ export default function ProductDescription({
   id,
   description,
   price,
-  discont_price,
+  discount_price,
 }) {
-  const linkToImg = `http://localhost:3333/${image}`;
+  const linkToImg = `${LINK}${image}`;
   const dispatch = useDispatch();
   
   return (
@@ -22,13 +23,13 @@ export default function ProductDescription({
             <div className={s.price_container}>
               <div className={s.price}>
                   {
-                      discont_price === null ? (
+                      discount_price === null ? (
                           <p className={s.main_price}>{price} $</p>
                       ) : (
                           <>
-                          <p className={s.main_price}>{discont_price} $</p>
+                          <p className={s.main_price}>{discount_price} $</p>
                           <p className={s.old_price}>{price} $</p>
-                          <p className={s.discount}>- {((price - discont_price) / price * 100).toFixed(0)} %</p>
+                          <p className={s.discount}>- {((price - discount_price) / price * 100).toFixed(0)} %</p>
                           </>
                       )
                   }

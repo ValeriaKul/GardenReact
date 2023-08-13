@@ -1,6 +1,7 @@
 import { categoriesLoadAction } from "../reducer/categoriesReducer";
+import { LINK } from "../link/link";
 
-const URL = "http://localhost:3333/categories/all"
+const URL = `${LINK}/categories/all`
 
 export const asyncLoadCategoriesAction = async  (dispatch) => {
     const response = await fetch(URL);

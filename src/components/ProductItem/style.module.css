@@ -9,12 +9,11 @@
 }
 .container img {
   width: 100%;
-  /* height: 90%; */
 }
 .discount_price {
   font-style: normal;
   font-weight: 600;
-  font-size: 30px;
+  font-size: 26px;
   line-height: 130%;
   letter-spacing: 0.03em;
   color: #000000;
@@ -40,7 +39,9 @@
 
 .price_container {
   display: grid;
-  grid-template-columns: 100px 100px 100px;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  justify-items: center;
   align-items: center;
 }
 
@@ -51,6 +52,7 @@
   line-height: 130%;
   letter-spacing: 0.03em;
   color: #3a3a3a;
+  text-decoration: none;
 }
 
 .btn_add_to_basket {
@@ -73,4 +75,10 @@
 .container:hover .btn_add_to_basket {
   opacity: 0.9;
   transition: opacity 0.5s;
+}
+
+.img_container {
+  height: 300px;
+  display: flex;
+  align-items: center;
 }
