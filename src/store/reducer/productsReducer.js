@@ -33,6 +33,9 @@ const getPrice = ({ price, discount_price }) => {
   return actual_price;
 };
 
+const getActualPrice = (item) =>
+  item.discount_price !== null ? item.discount_price : item.price;
+
 export const productsReducer = (state = [], action) => {
   switch (action.type) {
     case PRODUCTS_LOAD:
@@ -55,12 +58,13 @@ export const productsReducer = (state = [], action) => {
         return [...state].sort((a, b) => getPrice(b) - getPrice(a));
       }
     case SEARCH_BY_PRICE:
-      return [...state].map((el) => {
-        let actualPrice =
-          el.discount_price === null ? el.price : el.discount_price;
+      return state.map((el) => {
+        let actualPrice = getActualPrice(el);
         if (
-          actualPrice >= action.payload.min &&
-          actualPrice <= action.payload.max
+          (actualPrice >= action.payload.min &&
+            actualPrice <= action.payload.max) ||
+          (actualPrice <= action.payload.min &&
+            actualPrice >= action.payload.max)
         ) {
           return { ...el, hide: false };
         } else {

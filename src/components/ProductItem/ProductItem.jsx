@@ -4,6 +4,9 @@ import { useDispatch } from "react-redux";
 import { basketAddProductAction } from "../../store/reducer/basketReducer";
 import { Link } from "react-router-dom";
 import { LINK } from "../../store/link/link";
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export default function ProductItem({
   id,
@@ -15,7 +18,9 @@ export default function ProductItem({
   const link = `/products/${id}`;
   const linkToImg = `${LINK}${image}`;
   const dispatch = useDispatch();
+
   const handleAddToCart = (event) => {
+    toast.success("The product has been successfully added to the cart!");
     event.stopPropagation();
     dispatch(basketAddProductAction(+id));
   };
@@ -44,6 +49,7 @@ export default function ProductItem({
         )}
         {title}
       </Link>
+      
     </div>
   );
 }

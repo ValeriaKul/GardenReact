@@ -1,4 +1,6 @@
 import { LINK } from "../link/link";
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 const URL = `${LINK}/order/send`
 
@@ -14,7 +16,7 @@ export const createOrderAction = (order) => {
       });
 
       const data = await response.json();
-      alert(data.message);
+      toast(data.message);
     } catch (error) {
       console.error('Error creating order:', error);
     }

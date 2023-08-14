@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import s from "./discountSection.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { asyncCreateDiscountAction } from "../../store/asyncAction/discount";
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function DiscountSection() {
   const [value, setValue] = useState("+49");
@@ -21,10 +23,11 @@ export default function DiscountSection() {
       const data = value;
       dispatch(asyncCreateDiscountAction(data));
       setValue("+49");
+      console.log(discountApplied);
     } else {
-      alert("Invalid German phone number format");
+      toast.warning("Invalid German phone number format");
     }
-    alert(discountApplied ? "Discount has already been used" : "Discount received")
+    toast(discountApplied ? "Discount received" : "Discount has already been used" )
   };
 
   return (
