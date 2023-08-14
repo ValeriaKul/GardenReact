@@ -55,6 +55,29 @@
   cursor: pointer;
 }
 
+.cart_container {
+  display: flex;
+  position: relative;
+  cursor: pointer;
+}
+
+.cart_item_count_badge {
+  position: absolute;
+  bottom: -5px;
+  right: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  background-color: green;
+  color: white;
+  font-size: 12px;
+  border-radius: 50%;
+  font-weight: 600;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+}
+
 .burger_menu {
   display: none;
   cursor: pointer;
@@ -91,10 +114,10 @@
     justify-content: flex-end;
     background-color: rgba(51, 153, 51, 0.7);
     top: 110px;
-    margin: 0; /* Расположение по вертикали */
-    right: 0; /* Расположение по горизонтали */
-    width: 50%; /* Ширина меню */
-    padding: 20px; /* Отступы внутри меню */
+    margin: 0; 
+    right: 0; 
+    width: 50%; 
+    padding: 20px; 
     z-index: 1;
     border-radius: 5px;
   }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import s from "./header.module.css";
+import { useSelector } from "react-redux";
 
 export default function Header() {
   const [isMenuOpen, setMenuOpen] = useState(false);
@@ -9,6 +10,12 @@ export default function Header() {
   );
   const navigate = useNavigate();
   const menuRef = useRef(null);
+  const { basket, products } = useSelector((state) => state);
+  const data = basket.map((item) => {
+    const product = products.find(({ id }) => id === item.id);
+    return { ...item, ...product };
+  });
+  const totalCount = data.reduce((a, b) => a + b.count, 0);
 
   useEffect(() => {
     const handleResize = () => {
@@ -24,12 +31,10 @@ export default function Header() {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      // Проверяем, был ли кликнут элемент вне меню
       if (menuRef.current && !menuRef.current.contains(event.target)) {
         setMenuOpen(false);
       }
     };
-    // Добавляем обработчик события click к корневому элементу приложения
     document.addEventListener("click", handleClickOutside);
     return () => {
       document.removeEventListener("click", handleClickOutside);
@@ -55,7 +60,6 @@ export default function Header() {
 
   const renderLinks = () => {
     if (isMobileDevice && isMenuOpen) {
-      // Мобильная версия - отображаем все ссылки
       return (
         <>
           <NavLink
@@ -82,16 +86,9 @@ export default function Header() {
           >
             My Cart
           </NavLink>
-          <NavLink
-            to="/account"
-            onClick={() => setMenuOpen(false)}
-          >
-            My Account
-          </NavLink>
         </>
       );
     } else if (!isMobileDevice) {
-      // Десктопная версия - отображаем только выбранные ссылки
       return (
         <>
           <NavLink className={s.link} to="/">
@@ -107,6 +104,7 @@ export default function Header() {
       );
     }
   };
+
   return (
     <div className={s.header}>
       <img
@@ -126,12 +124,14 @@ export default function Header() {
       >
         {renderLinks()}
       </nav>
-      <img
-        className={s.btn_cart}
-        src="/images/header_img/cart.png"
-        alt="cart"
-        onClick={onClick}
-      />
+      <div className={s.cart_container} onClick={onClick}>
+  <img
+    className={s.btn_cart}
+    src="/images/header_img/cart.png"
+    alt="cart"
+  />
+  <div className={s.cart_item_count_badge}>{totalCount}</div>
+</div>
       <div
         className={`${s.burger_menu} ${isMobileDevice ? "" : s.hide}`}
         onClick={toggleMenu}

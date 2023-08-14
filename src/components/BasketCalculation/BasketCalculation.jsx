@@ -4,8 +4,6 @@ import s from "./style.module.css";
 import { basketClearAction } from "../../store/reducer/basketReducer";
 import { createOrderAction } from "../../store/asyncAction/order";
 
-const num = "1065,82";
-
 export default function BasketCalculation() {
   const dispatch = useDispatch();
   const { basket, products, discount } = useSelector((state) => state);
@@ -46,6 +44,7 @@ export default function BasketCalculation() {
     dispatch(createOrderAction(order));
     dispatch(basketClearAction());
   };
+  
   return (
     <div className={s.basket_calc_container}>
       <p className={s.title}>Order details</p>
