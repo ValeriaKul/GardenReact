@@ -21,6 +21,14 @@
   height: 50px;
   margin: 20px;
   cursor: pointer;
+  font-size: 20px;
+}
+
+.btn_catalog:hover {
+  font-weight: 600;
+  -webkit-box-shadow: 6px 6px 7px 4px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 6px 6px 7px 4px rgba(34, 60, 80, 0.2);
+  box-shadow: 6px 6px 7px 4px rgba(34, 60, 80, 0.2);
 }
 
 .navigation {
@@ -96,7 +104,7 @@
 
 @media only screen and (max-width: 768px) {
   .header {
-    grid-template-columns: 100px 1fr 100px 50px;
+    grid-template-columns: 100px 1fr 50px 50px;
   }
 
   .navigation {
@@ -114,10 +122,10 @@
     justify-content: flex-end;
     background-color: rgba(51, 153, 51, 0.7);
     top: 110px;
-    margin: 0; 
-    right: 0; 
-    width: 50%; 
-    padding: 20px; 
+    margin: 0;
+    right: 0;
+    width: 50%;
+    padding: 20px;
     z-index: 1;
     border-radius: 5px;
   }

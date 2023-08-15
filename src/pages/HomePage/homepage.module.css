@@ -36,6 +36,9 @@
 .btn_all_categ:hover {
   color: black;
   border: 2px solid black ;
+  -webkit-box-shadow: 6px 6px 7px 4px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 6px 6px 7px 4px rgba(34, 60, 80, 0.2);
+  box-shadow: 6px 6px 7px 4px rgba(34, 60, 80, 0.2);
 }
 
 .categories {

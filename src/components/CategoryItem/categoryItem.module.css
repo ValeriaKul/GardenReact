@@ -23,6 +23,12 @@
     text-decoration: none;
 }
 
+.categoryLink:hover{
+  -webkit-box-shadow: 6px 6px 7px 4px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 6px 6px 7px 4px rgba(34, 60, 80, 0.2);
+  box-shadow: 6px 6px 7px 4px rgba(34, 60, 80, 0.2);
+}
+
 @media only screen and (max-width: 768px) {
   .categoryItem {
     border: 2px solid green;

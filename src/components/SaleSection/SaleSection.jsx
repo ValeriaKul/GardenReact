@@ -14,9 +14,9 @@ export default function SaleSection() {
             <p className={s.season}>New season</p>
             <button onClick={onClick} className={s.btn_sale}>Sale</button>
         </div>
-        <div className={s.picture}>
+        {/* <div className={s.picture}>
             <img src="./images/homepage_sales.png" alt="sale" />
-        </div>
+        </div> */}
     </div>
   )
 }

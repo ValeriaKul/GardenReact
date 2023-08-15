@@ -1,6 +1,6 @@
 .sale_section {
   max-width: 1440px;
-  background-color: #a1e2eb;
+  background-image: url('/public/images/background\ top.png');
   height: 600px;
   padding-left: 40px;
   display: flex;
@@ -43,6 +43,7 @@
   font-size: 25px;
   line-height: 130%;
   color: #2d2d2d;
+  cursor :pointer;
 }
 
 .picture {
