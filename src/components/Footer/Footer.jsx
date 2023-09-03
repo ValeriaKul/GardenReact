@@ -3,10 +3,10 @@ import s from "./footer.module.css";
 
 export default function Footer() {
   const relocateToInstagram = () => {
-    window.open('https://www.instagram.com/', '_blank');
+    window.open("https://www.instagram.com/", "_blank");
   };
   const relocateToWhatsApp = () => {
-    window.open('ttps://chat.whatsapp.com/Etq8tfn30LV6rRw9ifa61K', '_blank');
+    window.open("ttps://chat.whatsapp.com/Etq8tfn30LV6rRw9ifa61K", "_blank");
   };
 
   const address = "Linkstraße 2, 8 OG, 10785, Berlin, Deutschland";
@@ -15,33 +15,38 @@ export default function Footer() {
   return (
     <div className={s.footer}>
       <div className={s.contact_address}>
-        <p className={s.contact_p}>Contact</p>
-        <p className={s.contact_p}>Address</p>
-        {/* <p className={s.pnone_number}>{phone}</p> */}
-        <a className={s.pnone_number} href="tel:+49 999 999 99 99">{phone}</a>
-        <a
-          className={s.link}
-          href="https://www.google.com/search?q=telranDE&bshm=lbsc/1"
-        >
-          {address}
-        </a>
-        <div className={s.icons}>
-          <img
-            src="/images/footer_img/instagram.png"
-            alt="instagram"
-            onClick={relocateToInstagram}
-          />
-          <img
-            src="/images/footer_img/whatsApp.png"
-            alt="whatsApp"
-            onClick={relocateToWhatsApp}
-          />
-          <p className={s.icon_name}>Instagram</p>
-          <p className={s.icon_name}>WhatsApp</p>
+        <div className={s.contact}>
+          <p className={s.contact_p}>Contact</p>
+          <a className={s.pnone_number} href="tel:+49 999 999 99 99">
+            {phone}
+          </a>
+          <div className={s.icons}>
+            <img
+              src="/images/footer_img/instagram.png"
+              alt="instagram"
+              onClick={relocateToInstagram}
+            />
+            <img
+              src="/images/footer_img/whatsApp.png"
+              alt="whatsApp"
+              onClick={relocateToWhatsApp}
+            />
+            <p className={s.icon_name}>Instagram</p>
+            <p className={s.icon_name}>WhatsApp</p>
+          </div>
         </div>
-        <div className={s.working_hours}>
-          <p className={s.wh_p1}>Working Hours:</p>
-          <p className={s.wh_p2}>24 hours a day</p>
+        <div className={s.address}>
+          <p className={s.contact_p}>Address</p>
+          <a
+            className={s.link}
+            href="https://www.google.com/search?q=telranDE&bshm=lbsc/1"
+          >
+            {address}
+          </a>
+          <div className={s.working_hours}>
+            <p className={s.wh_p1}>Working Hours:</p>
+            <p className={s.wh_p2}>24 hours a day</p>
+          </div>
         </div>
       </div>
       <div className={s.map}>

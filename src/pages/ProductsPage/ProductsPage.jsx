@@ -43,8 +43,10 @@ export default function ProductsPage() {
     <>
       {location.pathname === "/products/sale" ? (
         <div className={s.page}>
-          <h2>Sale</h2>
-          <ProductsFilterBar />
+          <div className={s.page__name_filter}>
+            <h2>Sale</h2>
+            <ProductsFilterBar />
+          </div>
           <div className={s.products}>
             {products
               .filter((item) => item.discount_price)
@@ -55,11 +57,13 @@ export default function ProductsPage() {
         </div>
       ) : (
         <div className={s.page}>
-          <h2>{category === undefined ? "All products" : category.title}</h2>
-          <ProductsFilterBar
-            showDiscountedItems={showDiscountedItems}
-            onDiscountCheckboxChange={handleDiscountCheckboxChange}
-          />
+          <div className={s.page__name_filter}>
+            <h2>{category === undefined ? "All products" : category.title}</h2>
+            <ProductsFilterBar
+              showDiscountedItems={showDiscountedItems}
+              onDiscountCheckboxChange={handleDiscountCheckboxChange}
+            />
+          </div>
           <div className={s.products}>
             {products
               .filter((item) => !showDiscountedItems || item.discount_price)

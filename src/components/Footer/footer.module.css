@@ -42,7 +42,6 @@
 .contact_address {
   display: grid;
   grid-template-columns: 1.5fr 1fr;
-  grid-template-rows: 120px 120px 120px;
   align-items: center;
 }
 
@@ -68,4 +67,24 @@
   font-size: 30px;
   line-height: 130%;
   color: black;
+}
+
+@media only screen and (max-width: 768px) {
+
+  .contact_address {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .pnone_number, .link, .wh_p2 {
+    font-size: 20px;
+  }
+
+  .contact, .address {
+    width: 100%;
+  }
+  .icons {
+    padding-top: 10px;
+  }
 }

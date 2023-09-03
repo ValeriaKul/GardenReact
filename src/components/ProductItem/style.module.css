@@ -6,6 +6,10 @@
   gap: 10px;
   text-decoration: none;
   position: relative;
+  background: #efeeee;
+  border-radius: 15px;
+  box-shadow: 2px 21px 34px 2px rgba(34, 60, 80, 0.2);
+
 }
 .container img {
   width: 100%;

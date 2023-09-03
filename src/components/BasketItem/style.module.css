@@ -16,9 +16,9 @@
 }
 
 .actual_price_container {
-    display: flex;
-    align-items: center;
-    gap: 60px;
+  display: flex;
+  align-items: center;
+  gap: 60px;
 }
 .image_basket {
   width: 192.6px;
@@ -81,7 +81,70 @@
 }
 
 .dtn_delete {
-    font-size: 22px;
-    color: #3a3a3a;
-    margin-top: 20px;
+  font-size: 22px;
+  color: #3a3a3a;
+  margin-top: 20px;
+}
+
+.count_container__mobile,
+.price_mobile {
+  display: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .basket_item {
+    display: flex;
+    gap: 5px;
+  }
+  .image_basket {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+  }
+  .actual_price {
+    margin: 0;
+  }
+  .actual_price_container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: flex-start;
+  }
+  .count_container__desktop {
+    display: none;
+  }
+
+  .count_container__mobile,
+  .price_mobile {
+    display: block;
+  }
+
+  .price_mobile .actual_price,
+  .old_price {
+    font-size: 16px;
+  }
+
+  .count_container__mobile .count_container {
+    flex-direction: column;
+    height: 100%;
+    width: 30px;
+    padding: 20px 0;
+    border: none;
+  }
+
+  .price_desktop, .dtn_delete {
+    display: none;
+  }
+
+  .title_and_count {
+    margin: 5px;
+    width: 65%;
+    gap: 10px;
+    justify-content: flex-start;
+  }
+
+  .title {
+    font-style: italic;
+    font-size: 16px;
+  }
 }

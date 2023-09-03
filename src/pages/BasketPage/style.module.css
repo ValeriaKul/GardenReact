@@ -26,6 +26,7 @@
 @media only screen and (max-width: 768px) {
   .page  {
     grid-template-columns: 1fr;
+    margin: 0 5px;
   }
   .title{
     font-size: 23px;

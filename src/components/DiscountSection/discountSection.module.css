@@ -86,11 +86,21 @@ input[type="number"]::-webkit-outer-spin-button {
 
 
 @media only screen and (max-width: 768px) {
+  .discount_section {
+    display: flex;
+    flex-direction: column;
+  }
+
   .picture {
     height: 200px;
   }
 
   .p_1, .p_2 {
     font-size: 30px;
+  }
+
+  .number, .btn_discount {
+    width: 90%;
+    font-size: 16px;
   }
 }

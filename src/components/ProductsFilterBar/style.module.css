@@ -52,3 +52,41 @@
   border: 1px solid #000000;
   border-radius: 7px;
 }
+
+.filter__mobile {
+  font-size: 30px;
+  display: none;
+}
+
+.dropdown_menu {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-size: 18px;
+  padding: 10px 0;
+}
+
+@media only screen and (max-width: 768px) {
+  .filter__mobile {
+    display: block;
+  }
+
+  .filter_sort {
+    display: flex;
+  }
+
+  .filter__desktop {
+    display: none;
+  }
+
+  .filter_discount p, .filter_sort p {
+    font-size: 16px;
+    padding: 10px;
+  }
+}

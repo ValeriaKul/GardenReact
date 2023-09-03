@@ -10,5 +10,12 @@
   grid-auto-rows: max-content;
   gap: 20px;
   justify-items: center;
-  /* align-items: baseline; */
+}
+
+@media only screen and (max-width: 768px) {
+  .page__name_filter {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+  }
 }
