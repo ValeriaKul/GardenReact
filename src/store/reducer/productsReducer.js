@@ -28,49 +28,48 @@ export const productsSortFromToFilterAction = (payload) => ({
   payload,
 });
 
-const getPrice = ({ price, discount_price }) => {
-  let actual_price = discount_price !== null ? discount_price : price;
-  return actual_price;
-};
-
+// const getPrice = ({ price, discount_price }) => {
+//   let actual_price = discount_price !== null ? discount_price : price;
+//   return actual_price;
+// };
 const getActualPrice = (item) =>
   item.discount_price !== null ? item.discount_price : item.price;
 
 export const productsReducer = (state = [], action) => {
+  
   switch (action.type) {
     case PRODUCTS_LOAD:
       return action.payload.map((item) => ({ ...item, show: true }));
+    
     case PRODUCTS_RESET_FILTER:
       return state.map((item) => ({ ...item, show: true }));
+
     case PRODUCT_DISCOUNT_FILTER:
-      if (action.payload) {
-        return state.filter((item) => item.discount_price !== null);
-      } else {
-        return state;
-      }
+      return state.map((item) => ({
+        ...item,
+        show: item.discount_price !== null,
+      }));
+      
     case PRODUCTS_SORT_PRICE_FILTER:
-      if (action.payload === "default") {
-        return [...state].sort((a, b) => a.id - b.id);
-      }
+      let sorted = [...state];
       if (action.payload === "ascend") {
-        return [...state].sort((a, b) => getPrice(a) - getPrice(b));
-      } else {
-        return [...state].sort((a, b) => getPrice(b) - getPrice(a));
+        sorted.sort((a, b) => getActualPrice(a) - getActualPrice(b));
+      } else if (action.payload === "descend") {
+        sorted.sort((a, b) => getActualPrice(b) - getActualPrice(a));
       }
+      return sorted;
+
     case SEARCH_BY_PRICE:
+      let minPrice = parseFloat(action.payload.min);
+      let maxPrice = parseFloat(action.payload.max);
       return state.map((el) => {
         let actualPrice = getActualPrice(el);
-        if (
-          (actualPrice >= action.payload.min &&
-            actualPrice <= action.payload.max) ||
-          (actualPrice <= action.payload.min &&
-            actualPrice >= action.payload.max)
-        ) {
-          return { ...el, hide: false };
-        } else {
-          return { ...el, hide: true };
-        }
+        return { 
+          ...el, 
+          show: actualPrice >= minPrice && actualPrice <= maxPrice 
+        };
       });
+
     default:
       return state;
   }

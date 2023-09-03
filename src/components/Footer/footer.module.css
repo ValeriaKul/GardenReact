@@ -74,17 +74,33 @@
   .contact_address {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 18px;
   }
 
   .pnone_number, .link, .wh_p2 {
-    font-size: 20px;
+    font-size: 16px;
   }
-
+  .contact_p {
+    font-size: 18px;
+  }
   .contact, .address {
     width: 100%;
   }
   .icons {
-    padding-top: 10px;
+    /* padding-top: 20px; */
+    align-items: center;
+
+  }
+
+  iframe {
+    height: 200px;
+  }
+
+  .icons img {
+    width: 40px;
+  }
+
+  .icon_name {
+    display: none;
   }
 }

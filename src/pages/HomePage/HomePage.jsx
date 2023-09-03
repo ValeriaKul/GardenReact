@@ -18,6 +18,7 @@ export default function HomePage() {
     const shuffledData = shuffleArray(saleProducts);
     const selectedData = shuffledData.slice(0, 3);
     setRandomData(selectedData);
+    // eslint-disable-next-line
   }, [products]);
 
   const shuffleArray = (array) => {

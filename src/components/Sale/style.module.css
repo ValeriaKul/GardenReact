@@ -21,7 +21,9 @@
 @media only screen and (max-width: 768px) {
     .sale_products {
         grid-template-columns:  1fr;
-       
     }
+    .title {
+    font-size: 23px;
 
+    }
   }

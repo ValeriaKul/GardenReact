@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import s from "./style.module.css";
 import { useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -20,21 +20,27 @@ const SortSelect = ({ sortPriceOnChange }) => (
 );
 
 const PriceForm = ({ priceRange, setPriceRange, handlePriceFilter }) => (
-  <form className={s.filter_price} onSubmit={handlePriceFilter}>
+  <form className={s.filter_price} onChange={handlePriceFilter}>
     <p>Price</p>
     <input
       className={s.input}
       type="number"
       placeholder="from"
       value={priceRange.min}
-      onChange={(e) => setPriceRange({ ...priceRange, min: e.target.value })}
+      onChange={(e) => {
+        setPriceRange({ ...priceRange, min: e.target.value });
+       
+      }}
     />
     <input
       className={s.input}
       type="number"
       placeholder="to"
       value={priceRange.max}
-      onChange={(e) => setPriceRange({ ...priceRange, max: e.target.value })}
+      onChange={(e) => {
+        setPriceRange({ ...priceRange, max: e.target.value });
+  
+      }}
     />
   </form>
 );
@@ -47,6 +53,8 @@ export default function ProductsFilterBar({
   const dispatch = useDispatch();
   const [priceRange, setPriceRange] = useState({ min: "", max: "" });
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  useEffect(() => {
+}, [priceRange]);
 
   const handleDiscountCheckbox = (event) => {
     const checked = event.target.checked;
@@ -58,9 +66,13 @@ export default function ProductsFilterBar({
     openBurgerMenu();
   };
 
-  const handlePriceFilter = () => {
-    dispatch(productsSortFromToFilterAction(priceRange));
-  };
+  const handlePriceFilter = useCallback(() => {
+    let min = parseFloat(priceRange.min);
+    let max = parseFloat(priceRange.max);
+    dispatch(productsSortFromToFilterAction({ min, max }));
+}, [dispatch, priceRange]);
+
+  
 
   const openBurgerMenu = () => {
     setIsMenuOpen(!isMenuOpen);

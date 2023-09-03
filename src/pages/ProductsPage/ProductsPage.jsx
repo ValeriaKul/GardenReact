@@ -28,6 +28,7 @@ export default function ProductsPage() {
 
   useEffect(() => {
     dispatch(productsResetFilter());
+    // eslint-disable-next-line
   }, []);
 
   const handleDiscountCheckboxChange = (checked) => {
