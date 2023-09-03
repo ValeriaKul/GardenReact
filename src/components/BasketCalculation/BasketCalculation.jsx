@@ -31,7 +31,7 @@ export default function BasketCalculation() {
 
   const totalSum = (totalPrice - totalDiscount5).toFixed(2);
 
-  const totalDiscount = +totalDiscount5 + +discountedCost;
+  const totalDiscount =( +totalDiscount5 + +discountedCost).toFixed(2);
 
   const totalCount = data.reduce((a, b) => a + b.count, 0);
   const onSubmit = async (e) => {
