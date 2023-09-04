@@ -1,9 +1,13 @@
 .page {
-  max-width: 1440px;
-  margin: 0px auto;
+margin: 0px auto;
+min-width: 390px;
 }
 
 .error {
-  width: 1440px;
-  height: 625px;
+  max-width: 100%;       
+  height: auto;   
+  display: block;       
+  margin: 0 auto;     
 }
+
+
